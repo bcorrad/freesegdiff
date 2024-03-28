@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeSeg-Diff</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
-            text-align: center;
+            /* text-align: center; */
         }
+
         #content {
             margin-top: 50px;
         }
+
         #image {
             display: block;
             margin: 0 auto;
             max-width: 80%;
         }
+
         #text {
             margin-top: 20px;
         }
+
         #links {
             margin-top: 30px;
         }
+
         #links a {
             display: block;
             margin-bottom: 10px;
             text-decoration: none;
             color: blue;
+            text-align: center;
+        }
+
+        #authors {
+            text-align: center;
+        }
+
+        #title {
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
-    <h1>Benvenuti nella mia pagina HTML</h1>
+    <h1 id="title">FreeSeg-Diff: Training-Free Open-Vocabulary Segmentation with Diffusion
+        Models</h1>
+    <div id="authors">
+        <p>Barbara Toniella Corradini<sup>1</sup> &nbsp; Mustafa Shukor<sup>2</sup> &nbsp; Paul
+            Couairon<sup>2</sup> &nbsp; Guillaume Couairon<sup>2</sup> &nbsp;
+            <br /> Franco Scarselli<sup>1</sup> &nbsp; Matthieu
+            Cord<sup>2,3</sup>
+        </p>
+        <p><sup>1</sup> University of Siena, <sup>2</sup> Sorbonne University, <sup>3</sup> Valeo.ai</p>
+    </div>
     <div id="content">
-        <img src="imgs/freesegdiff.png" alt="Immagine" id="image">
+        <img src="imgs/FreeSeg-Diff.png" alt="Immagine" id="image">
         <div id="text">
-            <p>Questo è un testo descrittivo. Puoi scrivere qui qualsiasi cosa desideri comunicare ai tuoi visitatori.</p>
+            <p>
+                <b>Zero-shot open-vocabulary segmentation with FreeSeg-Diff.</b> The image is passed to a diffusion
+                model and to an image captioner model to get visual features and text
+                description respectively. The features are used to get class-agnostic masks, which are then associated
+                with the extracted text. The final segmentation map is obtained after a mask refinement step. All models
+                are kept frozen.
+            </p>
         </div>
         <div id="links">
-            <a href="link1.html">Paper 1</a>
-            <a href="link2.html">Paper 2</a>
-            <a href="link3.html">Paper 3</a>
+            <a href="link1.html">[Paper]</a>
         </div>
+        <img src="imgs/algo.png" alt="Immagine" id="image">
     </div>
 </body>
+
 </html>
