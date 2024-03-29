@@ -21,6 +21,8 @@
 
         #caption {
             margin-top: 30px;
+            margin-left: 10%;
+            margin-right: 10%;
             text-align: justify;
         }
 
@@ -45,6 +47,41 @@
 
         #links h4 {
             display: inline-block;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(8, minmax(2.2cm, 0.5cm));
+            /* 8 colonne per riga */
+            gap: 0px;
+            /* spazio tra le immagini */
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .image-item {
+            width: 2.2cm;
+            /* larghezza al 100% del contenitore */
+            height: 2.2cm;
+            /* altezza al 100% del contenitore */
+            overflow: hidden;
+            /* per assicurarsi che le immagini non fuoriuscano dai loro contenitori */
+        }
+
+        .image-item img {
+            width: 100%;
+            /* larghezza al 100% del contenitore */
+            height: 100%;
+            /* altezza al 100% del contenitore */
+            object-fit: cover;
+            /* ritaglia l'immagine al centro per adattarla */
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 colonne per riga su schermi più piccoli */
+            }
         }
     </style>
 </head>
@@ -81,12 +118,54 @@
         <div id="caption">
             <p>
                 <b>Our detailed pipeline for zero-shot semantic segmentation. </b>
-                We extract features from several blocks of the DM corresponding to a noisy image. 
-                These features are clustered to generate class-agnostic masks that are used to produce image crops. 
-                These cropped parts are then passed to a CLIP image encoder <span style="font-family: 'Times New Roman', Times, serif;">𝓥</span> to associate each mask/cropped image to a given text/class. 
-                The textual classes are obtained by generating a caption from BLIP, followed by NLP tools to extract textual entities. 
-                These entities are mapped to the most similar mask. 
-                Finally, the masks are refined with CRF to obtain the final segmentation map. All models are kept frozen.
+                We extract features from several blocks of the DM corresponding to a noisy image.
+                These features are clustered to generate class-agnostic masks that are used to produce image crops.
+                These cropped parts are then passed to a CLIP image encoder <span
+                    style="font-family: 'Times New Roman', Times, serif;">𝓥</span> to associate each mask/cropped image
+                to a given text/class.
+                The textual classes are obtained by generating a caption from BLIP, followed by NLP tools to extract
+                textual entities.
+                These entities are mapped to the most similar mask.
+                Finally, the masks are refined with CRF to obtain the final segmentation map. All models are kept
+                frozen.
+            </p>
+        </div>
+        <div class="image-grid">
+            <!-- Inserisci qui tutte le immagini fornite -->
+            <div class="image-item"><img src="imgs/VOC/2007_001458.png" alt="Image 1"></div>
+            <div class="image-item"><img src="imgs/VOC/2007_008973.png" alt="Image 2"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_002152.png" alt="Image 3"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_006752.png" alt="Image 4"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007120.png" alt="Image 5"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007797.png" alt="Image 6"></div>
+            <div class="image-item"><img src="imgs/VOC/2010_005534.png" alt="Image 7"></div>
+            <div class="image-item"><img src="imgs/VOC/2011_001014.png" alt="Image 8"></div>
+
+            <div class="image-item"><img src="imgs/VOC/2007_001458_f_clusters_4.png" alt="Image 9"></div>
+            <div class="image-item"><img src="imgs/VOC/2007_008973_f_clusters_4.png" alt="Image 10"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_002152_f_clusters_4.png" alt="Image 11"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_006752_f_clusters_4.png" alt="Image 12"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007120_f_clusters_4.png" alt="Image 13"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007797_f_clusters_4.png" alt="Image 14"></div>
+            <div class="image-item"><img src="imgs/VOC/2010_005534_f_clusters_4.png" alt="Image 15"></div>
+            <div class="image-item"><img src="imgs/VOC/2011_001014_f_clusters_4.png" alt="Image 16"></div>
+
+            <div class="image-item"><img src="imgs/VOC/2007_001458_f_no_legend_assigned_4.png" alt="Image 17"></div>
+            <div class="image-item"><img src="imgs/VOC/2007_008973_f_no_legend_assigned_4.png" alt="Image 18"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_002152_f_no_legend_assigned_4.png" alt="Image 19"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_006752_f_no_legend_assigned_4.png" alt="Image 20"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007120_f_no_legend_assigned_4.png" alt="Image 21"></div>
+            <div class="image-item"><img src="imgs/VOC/2008_007797_f_no_legend_assigned_4.png" alt="Image 22"></div>
+            <div class="image-item"><img src="imgs/VOC/2010_005534_f_no_legend_assigned_4.png" alt="Image 23"></div>
+            <div class="image-item"><img src="imgs/VOC/2011_001014_f_no_legend_assigned_4.png" alt="Image 24"></div>
+        </div>
+        <div id="caption">
+            <p>
+                <b>Qualitative results on Pascal VOC dataset.</b>
+                From top to down: original image, raw clustering results of DM features, segmentation results with
+                FreeSeg-Diff.
+                Our pipeline filters out redundant clusters while retaining key objects and refine coarse masks to yield
+                sharp segmentation maps.
             </p>
         </div>
     </div>
