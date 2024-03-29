@@ -8,36 +8,31 @@
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
-            margin: 50;
+            margin-left: 10%;
+            margin-right: 10%;
             padding: 0;
-        }
-
-        #content {
-            margin-top: 50px;
-            margin: 50px;
         }
 
         #image {
             display: block;
             margin: 0 auto;
-            max-width: 80%;
+            max-width: 90%;
         }
 
-        #text {
-            margin-top: 20px;
+        #caption {
+            margin-top: 30px;
+            text-align: justify;
         }
 
         #links {
-            margin-top: 30px;
+            text-align: center;
         }
 
         #links a {
-            display: block;
-            margin-bottom: 10px;
             text-decoration: none;
             color: blue;
             text-align: center;
-            font-size: large;
+            font-size: small;
         }
 
         #authors {
@@ -48,9 +43,8 @@
             text-align: center;
         }
 
-        p {
-            margin-left: 20%;
-            margin-right: 20%;
+        #links h4 {
+            display: inline-block;
         }
     </style>
 </head>
@@ -67,8 +61,14 @@
         <p><sup>1</sup> University of Siena, <sup>2</sup> Sorbonne University, <sup>3</sup> Valeo.ai</p>
     </div>
     <div id="content">
-        <img src="imgs/FreeSeg-Diff.png" max-width="40%" alt="Immagine" id="image">
-        <div id="text">
+        <div id="links">
+            <h4>
+                <a href="link1.html">[Paper]</a>
+                <a href="link1.html">[Code]</a>
+            </h4>
+        </div>
+        <img src="imgs/FreeSeg-Diff.png" alt="Immagine" id="image">
+        <div id="caption">
             <p>
                 <b>Zero-shot open-vocabulary segmentation with FreeSeg-Diff.</b> The image is passed to a diffusion
                 model and to an image captioner model to get visual features and text
@@ -77,11 +77,18 @@
                 are kept frozen.
             </p>
         </div>
-        <div id="links">
-            <a href="link1.html">[Paper]</a>
-            <a href="link1.html">[Code]</a>
+        <img src="imgs/algo.png" alt="Immagine" id="image">
+        <div id="caption">
+            <p>
+                <b>Our detailed pipeline for zero-shot semantic segmentation. </b>
+                We extract features from several blocks of the DM corresponding to a noisy image. 
+                These features are clustered to generate class-agnostic masks that are used to produce image crops. 
+                These cropped parts are then passed to a CLIP image encoder <span style="font-family: 'Times New Roman', Times, serif;">𝓥</span> to associate each mask/cropped image to a given text/class. 
+                The textual classes are obtained by generating a caption from BLIP, followed by NLP tools to extract textual entities. 
+                These entities are mapped to the most similar mask. 
+                Finally, the masks are refined with CRF to obtain the final segmentation map. All models are kept frozen.
+            </p>
         </div>
-        <img src="imgs/algo.png" max-width="80%" alt="Immagine" id="image">
     </div>
 </body>
 
