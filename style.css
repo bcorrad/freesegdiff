@@ -1,0 +1,77 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0;
+}
+
+#image {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+#caption {
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+}
+
+#links {
+    text-align: center;
+}
+
+#links a {
+    text-decoration: none;
+    color: blue;
+    text-align: center;
+    font-size: small;
+}
+
+#authors {
+    text-align: center;
+}
+
+#title {
+    text-align: center;
+}
+
+#links h4 {
+    display: inline-block;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(2.2cm, 0.5cm));
+    /* 8 colonne per riga */
+    gap: 0px;
+    /* spazio tra le immagini */
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.image-item {
+    width: 2.2cm;
+    /* larghezza al 100% del contenitore */
+    height: 2.2cm;
+    /* altezza al 100% del contenitore */
+    overflow: hidden;
+    /* per assicurarsi che le immagini non fuoriuscano dai loro contenitori */
+}
+
+.image-item img {
+    width: 100%;
+    /* larghezza al 100% del contenitore */
+    height: 100%;
+    /* altezza al 100% del contenitore */
+    object-fit: cover;
+    /* ritaglia l'immagine al centro per adattarla */
+}
+
+@media screen and (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 colonne per riga su schermi più piccoli */
+    }
+}
