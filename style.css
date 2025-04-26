@@ -1,91 +1,101 @@
-/* Reset some defaults */
-body, h1, h4, p {
-    margin: 0;
+/* Add this line inside your HTML <head> */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin-left: 10%;
+    margin-right: 10%;
     padding: 0;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
+#image {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+#caption {
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+    font-size: 1rem;
     line-height: 1.6;
-    color: #333;
-    background-color: #fafafa;
-    padding: 20px;
 }
 
-/* Title styling */
-#title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-/* Authors section */
-#authors {
-    text-align: center;
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 2rem;
-}
-
-/* Links */
 #links {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-top: 20px;
 }
 
 #links a {
     text-decoration: none;
-    color: #0077cc;
+    color: #1e90ff;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+    padding: 10px 20px;
+    border: 2px solid #1e90ff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 5px;
 }
 
 #links a:hover {
-    color: #005999;
+    background-color: #1e90ff;
+    color: white;
+    transform: translateY(-3px);
 }
 
-/* Main image */
-#image {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 1rem auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Captions */
-#caption {
+#authors {
     text-align: center;
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-#caption p {
-    font-size: 0.95rem;
-    margin: 0; /* Keep zero margin as you asked */
-    color: #666;
+#title {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: 600;
 }
 
-/* Image grid */
+#links h4 {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(8, minmax(2.2cm, 0.5cm));
     gap: 10px;
-    margin: 2rem 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+
+.image-item {
+    width: 2.2cm;
+    height: 2.2cm;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-item:hover {
+    transform: scale(1.05);
 }
 
 .image-item img {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-item img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+@media screen and (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
