@@ -1,151 +1,91 @@
-/*  Modern, responsive stylesheet for FreeSeg-Diff demo — updated April 2025
-    — Added 10 % side‑margins and layout tweaks inspired by user snippet.
-    — Keeps dark‑mode, fluid type‑scale and micro‑interactions.
-*/
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap");
-
-/* ===== Root variables ===== */
-:root {
-  /* Fonts */
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Times New Roman", "Merriweather", Georgia, serif; /* prefer Times per user inspo */
-
-  /* Colours — light mode */
-  --clr-bg: #ffffff;
-  --clr-text: #111827;        /* slate-900 */
-  --clr-muted: #6b7280;       /* slate-500 */
-  --clr-accent: #2563eb;      /* blue-600 */
-  --clr-accent-hover: #1e40af;/* blue-800 */
-
-  --shadow-md: 0 4px 14px rgba(0,0,0,.08);
-  --radius: .5rem;
-  --side-margin: 10%;         /* new — configurable horizontal margin */
-  --max-content-width: 1024px;
+/* Reset some defaults */
+body, h1, h4, p {
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --clr-bg: #0f172a;        /* slate-950 */
-    --clr-text: #f8fafc;      /* slate-50 */
-    --clr-muted: #94a3b8;     /* slate-400 */
-    --clr-accent: #3b82f6;    /* blue-500 */
-    --clr-accent-hover: #60a5fa;/* blue-400 */
-    --shadow-md: 0 4px 14px rgba(0,0,0,.45);
-  }
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+    padding: 20px;
 }
 
-/* ===== Basic reset ===== */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-
-/* ===== Layout — apply 10 % gutters ===== */
-body{
-  font-family:var(--font-serif);
-  line-height:1.6;
-  background:var(--clr-bg);
-  color:var(--clr-text);
-  padding:0;                 /* per user snippet */
-  margin-left:var(--side-margin);
-  margin-right:var(--side-margin);
+/* Title styling */
+#title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-/* Centre inner content but keep side‑gutters */
-#content{
-  max-width:var(--max-content-width);
-  margin-inline:auto;
+/* Authors section */
+#authors {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 2rem;
 }
 
-/* Generic media */
-img,svg{max-width:100%;display:block;height:auto;}
-
-a{color:var(--clr-accent);text-decoration:none;}
-a:hover{color:var(--clr-accent-hover);}  
-
-/* ===== Typography ===== */
-h1#title{
-  font-size:clamp(1.75rem,4vw+1rem,3rem);
-  font-family:var(--font-serif);
-  text-align:center;
-  margin-block:1rem;
+/* Links */
+#links {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-#authors p{
-  text-align:center;
-  color:var(--clr-muted);
-  margin-bottom:2rem;
+#links a {
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
-/* ===== Links row ===== */
-#links{text-align:center;}
-#links h4{display:inline-block;}
-#links a{
-  font-family:var(--font-sans);
-  font-size:clamp(.8rem,2vw,.9rem);
-  padding:.45rem .9rem;
-  border-radius:.375rem;
-  background:var(--clr-accent);
-  color:#fff;
-  font-weight:500;
-  transition:background-color .2s ease,transform .2s ease;
-}
-#links a:hover{
-  background:var(--clr-accent-hover);
-  transform:translateY(-2px);
+#links a:hover {
+    color: #005999;
 }
 
-/* ===== Hero images ===== */
-#image{
-  display:block;
-  margin:0 auto;             /* centred like user */
-  max-width:90%;             /* follow user snippet */
-  border-radius:var(--radius);
-  box-shadow:var(--shadow-md);
-  margin-block:1.5rem;
+/* Main image */
+#image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ===== Captions ===== */
-#caption{
-  margin-top:30px;
-  margin-left:var(--side-margin);
-  margin-right:var(--side-margin);
-  max-width:60ch;
-  text-align:justify;         /* user inspo */
-  color:var(--clr-muted);
-  font-size:.95rem;
-}
-#caption b{color:var(--clr-text);}  /* emphasise important words */
-
-/* ===== Image grid ===== */
-.image-grid{
-  display:grid;
-  gap:0px;                    /* user preference */
-  margin-left:var(--side-margin);
-  margin-right:var(--side-margin);
-  grid-template-columns:repeat(8, minmax(2.2cm, 1fr)); /* 8 equal columns desktop */
+/* Captions */
+#caption {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 768px){
-  .image-grid{grid-template-columns:repeat(4, 1fr);}  /* 4 columns small screens */
+#caption p {
+    font-size: 0.95rem;
+    margin: 0; /* Keep zero margin as you asked */
+    color: #666;
 }
 
-.image-item{overflow:hidden;width:100%;aspect-ratio:1/1;} /* square cells */
-.image-item img{
-  width:100%;height:100%;object-fit:cover;transition:transform .2s ease,box-shadow .2s ease;
-}
-.image-item img:hover{
-  transform:scale(1.02);
-  box-shadow:0 4px 14px rgba(0,0,0,.15);
-}
-
-/* ===== Prefers reduced motion ===== */
-@media (prefers-reduced-motion:no-preference){
-  @keyframes fadeInUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-  body>*{animation:fadeInUp .4s ease both;animation-delay:.05s;}
+/* Image grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 2rem 0;
 }
 
-/* ===== Fine‑tuning for very narrow screens ===== */
-@media (max-width:480px){
-  #caption{font-size:.87rem;}
-  #links a{padding:.4rem .8rem;font-size:.85rem;}
+.image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
