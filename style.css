@@ -1,68 +1,73 @@
-/*
-  Modern, responsive stylesheet for FreeSeg-Diff demo — April 2025
-  — Uses CSS custom properties, flex & grid layout, prefers‑color‑scheme support,
-  — Accessible colour palette and subtle micro‑interactions.
+/*  Modern, responsive stylesheet for FreeSeg-Diff demo — updated April 2025
+    — Added 10 % side‑margins and layout tweaks inspired by user snippet.
+    — Keeps dark‑mode, fluid type‑scale and micro‑interactions.
 */
 
-/* ===== Root & Global Resets ===== */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap");
 
+/* ===== Root variables ===== */
 :root {
-  /* Typography */
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Merriweather", Georgia, serif;
+  /* Fonts */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Times New Roman", "Merriweather", Georgia, serif; /* prefer Times per user inspo */
 
-  /* Colours (light) */
+  /* Colours — light mode */
   --clr-bg: #ffffff;
-  --clr-text: #111827;  /* slate‑900 */
-  --clr-muted: #6b7280; /* slate‑500 */
-  --clr-accent: #2563eb; /* blue‑600 */
-  --clr-accent-hover: #1e40af; /* blue‑800 */
+  --clr-text: #111827;        /* slate-900 */
+  --clr-muted: #6b7280;       /* slate-500 */
+  --clr-accent: #2563eb;      /* blue-600 */
+  --clr-accent-hover: #1e40af;/* blue-800 */
 
-  /* Layout */
-  --max-content-width: 1024px;
   --shadow-md: 0 4px 14px rgba(0,0,0,.08);
   --radius: .5rem;
+  --side-margin: 10%;         /* new — configurable horizontal margin */
+  --max-content-width: 1024px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --clr-bg: #0f172a;  /* slate‑950 */
-    --clr-text: #f8fafc; /* slate‑50 */
-    --clr-muted: #94a3b8; /* slate‑400 */
-    --clr-accent: #3b82f6; /* blue‑500 */
-    --clr-accent-hover: #60a5fa; /* blue‑400 */
+    --clr-bg: #0f172a;        /* slate-950 */
+    --clr-text: #f8fafc;      /* slate-50 */
+    --clr-muted: #94a3b8;     /* slate-400 */
+    --clr-accent: #3b82f6;    /* blue-500 */
+    --clr-accent-hover: #60a5fa;/* blue-400 */
     --shadow-md: 0 4px 14px rgba(0,0,0,.45);
   }
 }
 
-/* CSS reset — lightweight modern alternative */
+/* ===== Basic reset ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+
+/* ===== Layout — apply 10 % gutters ===== */
 body{
-  font-family:var(--font-sans);
+  font-family:var(--font-serif);
   line-height:1.6;
   background:var(--clr-bg);
   color:var(--clr-text);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:1rem;
-  min-height:100vh;
+  padding:0;                 /* per user snippet */
+  margin-left:var(--side-margin);
+  margin-right:var(--side-margin);
 }
+
+/* Centre inner content but keep side‑gutters */
+#content{
+  max-width:var(--max-content-width);
+  margin-inline:auto;
+}
+
+/* Generic media */
 img,svg{max-width:100%;display:block;height:auto;}
 
 a{color:var(--clr-accent);text-decoration:none;}
 a:hover{color:var(--clr-accent-hover);}  
 
-/* ===== Page Structure ===== */
-#content{width:100%;max-width:var(--max-content-width);}
-
+/* ===== Typography ===== */
 h1#title{
   font-size:clamp(1.75rem,4vw+1rem,3rem);
   font-family:var(--font-serif);
   text-align:center;
-  margin-bottom:1rem;
+  margin-block:1rem;
 }
 
 #authors p{
@@ -71,15 +76,12 @@ h1#title{
   margin-bottom:2rem;
 }
 
-/* Links */
-#links{margin-bottom:1.5rem;}
-#links h4{
-  display:flex;
-  gap:1rem;
-  justify-content:center;
-  flex-wrap:wrap;
-}
+/* ===== Links row ===== */
+#links{text-align:center;}
+#links h4{display:inline-block;}
 #links a{
+  font-family:var(--font-sans);
+  font-size:clamp(.8rem,2vw,.9rem);
   padding:.45rem .9rem;
   border-radius:.375rem;
   background:var(--clr-accent);
@@ -92,52 +94,58 @@ h1#title{
   transform:translateY(-2px);
 }
 
-/* Hero / pipeline images */
+/* ===== Hero images ===== */
 #image{
-  width:100%;
+  display:block;
+  margin:0 auto;             /* centred like user */
+  max-width:90%;             /* follow user snippet */
   border-radius:var(--radius);
   box-shadow:var(--shadow-md);
-  margin:1.5rem 0;
+  margin-block:1.5rem;
 }
 
-/* Caption blocks (shared id in markup; could also be a class) */
+/* ===== Captions ===== */
 #caption{
+  margin-top:30px;
+  margin-left:var(--side-margin);
+  margin-right:var(--side-margin);
   max-width:60ch;
-  margin:0 auto 2rem;
-  font-size:.95rem;
+  text-align:justify;         /* user inspo */
   color:var(--clr-muted);
+  font-size:.95rem;
 }
-#caption b{color:var(--clr-text);}  /* Emphasise bold text */
+#caption b{color:var(--clr-text);}  /* emphasise important words */
 
-/* Image grid */
+/* ===== Image grid ===== */
 .image-grid{
   display:grid;
-  gap:.75rem;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  margin-bottom:2rem;
+  gap:0px;                    /* user preference */
+  margin-left:var(--side-margin);
+  margin-right:var(--side-margin);
+  grid-template-columns:repeat(8, minmax(2.2cm, 1fr)); /* 8 equal columns desktop */
 }
 
+@media screen and (max-width: 768px){
+  .image-grid{grid-template-columns:repeat(4, 1fr);}  /* 4 columns small screens */
+}
+
+.image-item{overflow:hidden;width:100%;aspect-ratio:1/1;} /* square cells */
 .image-item img{
-  width:100%;
-  height:auto;
-  object-fit:cover;
-  border-radius:.375rem;
-  transition:transform .2s ease,box-shadow .2s ease;
+  width:100%;height:100%;object-fit:cover;transition:transform .2s ease,box-shadow .2s ease;
 }
-
 .image-item img:hover{
-  transform:translateY(-4px) scale(1.02);
+  transform:scale(1.02);
   box-shadow:0 4px 14px rgba(0,0,0,.15);
 }
 
-/* ===== Utility animations ===== */
+/* ===== Prefers reduced motion ===== */
 @media (prefers-reduced-motion:no-preference){
   @keyframes fadeInUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
   body>*{animation:fadeInUp .4s ease both;animation-delay:.05s;}
 }
 
-/* ===== Small screens fine‑tuning ===== */
+/* ===== Fine‑tuning for very narrow screens ===== */
 @media (max-width:480px){
-  #links a{padding:.4rem .8rem;font-size:.9rem;}
   #caption{font-size:.87rem;}
+  #links a{padding:.4rem .8rem;font-size:.85rem;}
 }
